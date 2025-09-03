@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCA Tracker Pro - Septiembre 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #00f5ff, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        }
+
+        .live-banner {
+            background: linear-gradient(45deg, #4caf50, #66bb6a);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-weight: bold;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(76, 175, 80, 0.4); }
+            to { box-shadow: 0 0 35px rgba(76, 175, 80, 0.8); }
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00f5ff;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .quick-access {
+            background: rgba(33, 150, 243, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .quick-links a {
+            background: rgba(33, 150, 243, 0.3);
+            color: #2196f3;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .quick-links a:hover {
+            background: rgba(33, 150, 243, 0.5);
+            transform: scale(1.05);
+        }
+
+        .price-updater {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .update-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr auto;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: end;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #00f5ff;
+            font-weight: bold;
+        }
+
+        .update-grid input,
+        .update-grid select {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .update-grid button {
+            background: linear-gradient(45deg, #4caf50, #66bb6a);
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .update-grid button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .controls button {
+            background: linear-gradient(45deg, #00f5ff, #0099cc);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .controls button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 245, 255, 0.3);
+        }
+
+        .tracker-table {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .tracker-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tracker-table th {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 18px 12px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.95rem;
+        }
+
+        .tracker-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .tracker-table tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .action-buy {
+            background: rgba(76, 175, 80, 0.3);
+            color: #4caf50;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .action-wait {
+            background: rgba(244, 67, 54, 0.3);
+            color: #f44336;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .action-monitor {
+            background: rgba(255, 193, 7, 0.3);
+            color: #ffc107;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .price-up { color: #4caf50; font-weight: bold; }
+        .price-down { color: #f44336; font-weight: bold; }
+
+        .priority-alta { color: #4caf50; font-weight: bold; }
+        .priority-media { color: #ffc107; }
+        .priority-espera { color: #f44336; }
+
+        .alerts {
+            background: rgba(255, 193, 7, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .alert {
+            margin-bottom: 12px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .success { 
+            background: rgba(76, 175, 80, 0.3); 
+            color: #4caf50; 
+            border-left: 4px solid #4caf50;
+        }
+        .error { 
+            background: rgba(244, 67, 54, 0.3); 
+            color: #f44336; 
+            border-left: 4px solid #f44336;
+        }
+        .info { 
+            background: rgba(33, 150, 243, 0.3); 
+            color: #2196f3; 
+            border-left: 4px solid #2196f3;
+        }
+
+        .rules-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .rule {
+            margin: 12px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .fed-strategy {
+            background: rgba(255, 255, 255, 0.1); 
+            border-radius: 15px; 
+            padding: 25px; 
+            margin-bottom: 25px; 
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .update-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💎 DCA TRACKER PRO</h1>
+            <p>Dollar Cost Averaging Inteligente - Septiembre 2025</p>
+            <div class="live-banner">
+                🚀 SISTEMA HÍBRIDO: API + MANUAL = 100% CONFIABLE 🚀
+            </div>
+            
+            <div id="lastUpdate" style="margin-top: 15px; opacity: 0.9;">
+                ⏰ Listo para actualizar precios
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">$1,300</div>
+                    <div class="stat-label">Capital DCA Total</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="buyZones">0</div>
+                    <div class="stat-label">Zonas de Compra</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="updated">0/7</div>
+                    <div class="stat-label">Activos Actualizados</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="totalTrades">0</div>
+                    <div class="stat-label">Trades DCA</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-access">
+            <h3 style="color: #2196f3; margin-bottom: 10px;">🔗 Acceso Directo a Precios</h3>
+            <p style="margin-bottom: 15px;">Abre estos enlaces → Copia precios → Actualiza aquí abajo</p>
+            <div class="quick-links">
+                <a href="https://coinmarketcap.com/currencies/ethereum/" target="_blank">📊 ETH</a>
+                <a href="https://coinmarketcap.com/currencies/solana/" target="_blank">📊 SOL</a>
+                <a href="https://coinmarketcap.com/currencies/avalanche/" target="_blank">📊 AVAX</a>
+                <a href="https://coinmarketcap.com/currencies/chainlink/" target="_blank">📊 LINK</a>
+                <a href="https://coinmarketcap.com/currencies/aave/" target="_blank">📊 AAVE</a>
+                <a href="https://coinmarketcap.com/currencies/the-graph/" target="_blank">📊 GRT</a>
+                <a href="https://coinmarketcap.com/currencies/render-token/" target="_blank">📊 RNDR</a>
+            </div>
+        </div>
+
+        <div class="alerts">
+            <h3>🚨 Alertas DCA en Tiempo Real</h3>
+            <div id="alertsContainer">
+                <div class="alert">💡 Actualiza al menos un precio para ver alertas de trading DCA</div>
+            </div>
+        </div>
+
+        <div class="price-updater">
+            <h3 style="color: #00f5ff; margin-bottom: 25px;">📈 Actualizar Precios (Método Confiable)</h3>
+            
+            <div class="update-grid">
+                <div class="input-group">
+                    <label>Seleccionar Crypto</label>
+                    <select id="assetSelect">
+                        <option value="">Elegir activo...</option>
+                        <option value="ETH">ETH - Ethereum</option>
+                        <option value="SOL">SOL - Solana</option>
+                        <option value="AVAX">AVAX - Avalanche</option>
+                        <option value="LINK">LINK - Chainlink</option>
+                        <option value="AAVE">AAVE - Aave</option>
+                        <option value="GRT">GRT - The Graph</option>
+                        <option value="RNDR">RNDR - Render</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label>Precio Actual USD</label>
+                    <input type="number" id="priceInput" placeholder="0.00" step="0.001">
+                </div>
+                
+                <div class="input-group">
+                    <label>Cambio 24h %</label>
+                    <input type="number" id="changeInput" placeholder="0.0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label>Soporte L1 (Opcional)</label>
+                    <input type="number" id="supportInput" placeholder="0.00" step="0.001">
+                </div>
+                
+                <div class="input-group">
+                    <label>&nbsp;</label>
+                    <button onclick="updatePrice()">✅ ACTUALIZAR</button>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button onclick="loadAPI()">🔄 Precios en Vivo (API)</button>
+                <button onclick="fetchIndividualPrice()" style="background: linear-gradient(45deg, #ff6b6b, #ff8787);">🎯 Precio Individual</button>
+                <button onclick="executeDCA()">💰 Ejecutar DCA</button>
+                <button onclick="exportData()">📊 Exportar CSV</button>
+                <button onclick="clearAll()">🗑️ Limpiar Todo</button>
+            </div>
+            
+            <div id="messages"></div>
+        </div>
+
+        <div class="tracker-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crypto</th>
+                        <th>Precio USD</th>
+                        <th>Cambio 24h</th>
+                        <th>Soporte L1</th>
+                        <th>Soporte L2</th>
+                        <th>Distancia</th>
+                        <th>Recomendación DCA</th>
+                        <th>Monto USD</th>
+                        <th>Prioridad</th>
+                        <th>% Capital</th>
+                    </tr>
+                </thead>
+                <tbody id="cryptoTable">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="rules-section">
+            <h3 style="color: #00f5ff; margin-bottom: 20px;">📋 Estrategia DCA + FED Trading</h3>
+            <div class="rule"><strong>🟢 COMPRAR:</strong> Precio dentro del ±2% del soporte L1 → Invertir 18-25% del capital semanal</div>
+            <div class="rule"><strong>🟡 MONITOREAR:</strong> Zona neutral → Invertir 12-15% del capital semanal</div>
+            <div class="rule"><strong>🔴 ESPERAR:</strong> Precio >3% bajo soporte → Esperar llegada al soporte L2</div>
+            <div class="rule"><strong>📈 PROFIT-TAKING:</strong> 2x ganancia = Vender 50% | 3x ganancia = Vender 25% adicional</div>
+            <div class="rule"><strong>⚡ LÍMITE:</strong> Máximo 20% del capital total por activo por semana</div>
+        </div>
+
+        <!-- ESTRATEGIA FED -->
+        <div class="fed-strategy">
+            <h3 style="color: #ffd700; margin-bottom: 20px; text-align: center;">
+                🏛️ ESTRATEGIA ESPECIAL FED - ANUNCIO DE TASAS 🏛️
+            </h3>
+            
+            <table style="width: 100%; border-collapse: collapse; background: rgba(0, 0, 0, 0.3); border-radius: 10px; overflow: hidden;">
+                <thead>
+                    <tr style="background: linear-gradient(45deg, #ffd700, #ffed4e);">
+                        <th style="padding: 15px; color: #000; font-weight: bold; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">Momento de Entrada</th>
+                        <th style="padding: 15px; color: #000; font-weight: bold; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">% del Capital</th>
+                        <th style="padding: 15px; color: #000; font-weight: bold; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">Estrategia</th>
+                        <th style="padding: 15px; color: #000; font-weight: bold; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">Soportes / Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: rgba(76, 175, 80, 0.1);">
+                        <td style="padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); color: #4caf50; font-weight: bold;">
+                            🕐 PRE-FED<br><small style="opacity: 0.8;">1-4 horas antes</small>
+                        </td>
+                        <td style="padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; font-size: 1.2rem; font-weight: bold;">
+                            20-30%<br><small style="color: #4caf50;">($260-$390)</small>
+                        </td>
+                        <td style="padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff;">
+                            <strong>Entrada Anticipada</strong><br>
+                            • Asegurar participación en rally<br>
+                            • Compras escalonadas<br>
+                            • Stop-loss ajustado (-3%)
+                        </td>
+                        <td style="padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffd700;">
+                            ⚠️ <strong>Alto Riesgo</strong><br>
+                            • Vigilar volatilidad pre-anuncio<br>
+                            • Comprar solo en L1<br>
+                            • Reservar capital para pullback
+                        </td>
+                    </tr>
+                    <tr style="background: rgba(255, 193, 7, 0.1);">
+                        <td style="padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffc107; font-weight: bold;">
+                            📉 PULLBACK<br><small style="opacity: 0.8;">Durante/Post anuncio</small>
+                        </td>
+                        <td style="padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; font-size: 1.2rem; font-weight: bold;">
+                            30-40%<br><small style="color: #ffc107;">($390-$520)</small>
+                        </td>
+                        <td style="padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff;">
+                            <strong>Oportunidad de Oro</strong><br>
+                            • Aprovechar caída temporal<br>
+                            • DCA agresivo en soportes<br>
+                            • Aumentar exposición rápido
+                        </td>
+                        <td style="padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffd700;">
+                            ✅ <strong>Mejor R/R</strong><br>
+                            • Solo comprar en L1/L2<br>
+                            • Máximo 2-3 minutos decisión<br>
+                            • Priorizar ETH/SOL
+                        </td>
+                    </tr>
+                    <tr style="background: rgba(33, 150, 243, 0.1);">
+                        <td style="padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); color: #2196f3; font-weight: bold;">
+                            🚀 POST-FED<br><small style="opacity: 0.8;">0-24 horas después</small>
+                        </td>
+                        <td style="padding: 15px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; font-size: 1.2rem; font-weight: bold;">
+                            30-50%<br><small style="color: #2196f3;">($390-$650)</small>
+                        </td>
+                        <td style="padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff;">
+                            <strong>Confirmación Rally</strong><br>
+                            • Compras con confirmación<br>
+                            • Escalonado en 3-4 entradas<br>
+                            • Seguir momentum
+                        </td>
+                        <td style="padding: 15px; border: 1px solid rgba(255, 255, 255, 0.1); color: #ffd700;">
+                            ⚡ <strong>FOMO Control</strong><br>
+                            • No perseguir precios >5% pump<br>
+                            • Esperar retests<br>
+                            • Targets: +15-25% profit
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 20px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 10px; border: 1px solid rgba(255, 215, 0, 0.3);">
+                <h4 style="color: #ffd700; margin-bottom: 10px;">🎯 Distribución Óptima del Capital ($1,300 Total)</h4>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                    <div style="text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+                        <strong style="color: #4caf50;">PRE-FED</strong><br>
+                        $260-$390<br>
+                        <small style="opacity: 0.7;">Riesgo controlado</small>
+                    </div>
+                    <div style="text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+                        <strong style="color: #ffc107;">PULLBACK</strong><br>
+                        $390-$520<br>
+                        <small style="opacity: 0.7;">Mejor oportunidad</small>
+                    </div>
+                    <div style="text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+                        <strong style="color: #2196f3;">POST-FED</strong><br>
+                        $390-$650<br>
+                        <small style="opacity: 0.7;">Confirmación trend</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 15px; padding: 12px; background: rgba(244, 67, 54, 0.1); border-radius: 8px; border: 1px solid rgba(244, 67, 54, 0.3); text-align: center;">
+                <strong style="color: #f44336;">⚠️ REGLA DE ORO:</strong> Nunca usar 100% del capital en una sola fase. 
+                <span style="color: #ffd700;">Siempre mantener 20% de reserva para oportunidades inesperadas.</span>
+            </div>
+        </div>
+
+        <div class="price-updater">
+            <h3 style="color: #00f5ff; margin-bottom: 15px;">📝 Historial de Operaciones DCA</h3>
+            <div id="tradesHistory">
+                <p style="opacity: 0.7; text-align: center; padding: 20px;">
+                    📊 No hay operaciones DCA registradas aún<br>
+                    <small>Actualiza precios y ejecuta tu primera inversión DCA</small>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CONFIGURACIÓN DEL PORTFOLIO DCA (Ajustado a $1,300) =====
+        const TOTAL_CAPITAL = 1300;
+        const portfolio = [
+            {name: "ETH", capital: 325, percentage: 25, price: 0, change24h: 0, updated: false, lastUpdate: null},
+            {name: "SOL", capital: 260, percentage: 20, price: 0, change24h: 0, updated: false, lastUpdate: null},
+            {name: "AVAX", capital: 156, percentage: 12, price: 0, change24h: 0, updated: false, lastUpdate: null},
+            {name: "LINK", capital: 130, percentage: 10, price: 0, change24h: 0, updated: false, lastUpdate: null},
+            {name: "AAVE", capital: 65, percentage: 5, price: 0, change24h: 0, updated: false, lastUpdate: null},
+            {name: "GRT", capital: 39, percentage: 3, price: 0, change24h: 0, updated: false, lastUpdate: null},
+            {name: "RNDR", capital: 130, percentage: 10, price: 0, change24h: 0, updated: false, lastUpdate: null}
+        ];
+
+        // ===== NIVELES DE SOPORTE TÉCNICO =====
+        const supportLevels = {
+            ETH: {s1: 4200, s2: 4000},
+            SOL: {s1: 195, s2: 180},
+            AVAX: {s1: 22.5, s2: 20.0},
+            LINK: {s1: 22.0, s2: 20.0},
+            AAVE: {s1: 310, s2: 285},
+            GRT: {s1: 0.088, s2: 0.080},
+            RNDR: {s1: 3.30, s2: 3.00}
+        };
+
+        let dcaTrades = [];
+
+        // ===== FUNCIÓN PRINCIPAL: ACTUALIZAR PRECIO =====
+        function updatePrice() {
+            const asset = document.getElementById('assetSelect').value;
+            const price = parseFloat(document.getElementById('priceInput').value);
+            const change = parseFloat(document.getElementById('changeInput').value) || 0;
+            const newSupport = parseFloat(document.getElementById('supportInput').value);
+
+            if (!asset) {
+                showMessage('❌ Selecciona una crypto primero', 'error');
+                return;
+            }
+
+            if (!price || price <= 0) {
+                showMessage('❌ Ingresa un precio válido mayor a 0', 'error');
+                return;
+            }
+
+            // Encontrar activo en portfolio
+            const portfolioAsset = portfolio.find(p => p.name === asset);
+            if (!portfolioAsset) {
+                showMessage('❌ Activo no encontrado', 'error');
+                return;
+            }
+
+            // Actualizar datos
+            portfolioAsset.price = price;
+            portfolioAsset.change24h = change;
+            portfolioAsset.updated = true;
+            portfolioAsset.lastUpdate = new Date();
+
+            // Actualizar soporte si se proporcionó
+            if (newSupport && newSupport > 0) {
+                supportLevels[asset].s1 = newSupport;
+                supportLevels[asset].s2 = Math.round(newSupport * 0.90 * 100) / 100;
+            }
+
+            // Actualizar interfaz
+            refreshTable();
+            refreshAlerts();
+            updateStats();
+            clearInputs();
+
+            const supportMsg = newSupport ? ` + Soporte L1: ${newSupport}` : '';
+            showMessage(`✅ ${asset} actualizado: ${price} (${change >= 0 ? '+' : ''}${change.toFixed(1)}%)${supportMsg}`, 'success');
+        }
+
+        // ===== CALCULAR RECOMENDACIÓN DCA =====
+        function getDCARecommendation(distancePercent) {
+            const absDistance = Math.abs(distancePercent);
+            
+            if (absDistance <= 2) {
+                return {
+                    action: '🟢 COMPRAR DCA',
+                    class: 'action-buy',
+                    priority: 'ALTA',
+                    priorityClass: 'priority-alta',
+                    percentage: 22,
+                    reasoning: 'Precio muy cerca del soporte técnico'
+                };
+            } else if (distancePercent < -3) {
+                return {
+                    action: '🔴 ESPERAR L2',
+                    class: 'action-wait',
+                    priority: 'ESPERA',
+                    priorityClass: 'priority-espera',
+                    percentage: 0,
+                    reasoning: 'Soporte roto, esperar siguiente nivel'
+                };
+            } else if (distancePercent > 8) {
+                return {
+                    action: '🟡 EVALUAR',
+                    class: 'action-monitor',
+                    priority: 'BAJA',
+                    priorityClass: 'priority-media',
+                    percentage: 8,
+                    reasoning: 'Precio alto, DCA pequeño'
+                };
+            } else {
+                return {
+                    action: '⏳ MONITOREAR',
+                    class: 'action-monitor',
+                    priority: 'MEDIA',
+                    priorityClass: 'priority-media',
+                    percentage: 15,
+                    reasoning: 'Zona neutral de acumulación'
+                };
+            }
+        }
+
+        // ===== ACTUALIZAR TABLA =====
+        function refreshTable() {
+            const tbody = document.getElementById('cryptoTable');
+            tbody.innerHTML = '';
+
+            portfolio.forEach(asset => {
+                const support = supportLevels[asset.name];
+                const distancePercent = asset.price > 0 ? 
+                    ((asset.price - support.s1) / support.s1 * 100) : 0;
+                
+                const recommendation = getDCARecommendation(distancePercent);
+                const investAmount = Math.round(asset.capital * recommendation.percentage / 100);
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${asset.name}</strong></td>
+                    <td>${asset.price > 0 ? `${asset.price.toFixed(asset.price < 1 ? 4 : 2)}` : '-'}</td>
+                    <td class="${asset.change24h >= 0 ? 'price-up' : 'price-down'}">
+                        ${asset.updated ? (asset.change24h >= 0 ? '+' : '') + asset.change24h.toFixed(1) + '%' : '-'}
+                    </td>
+                    <td>${support.s1.toFixed(support.s1 < 1 ? 4 : 2)}</td>
+                    <td>${support.s2.toFixed(support.s2 < 1 ? 4 : 2)}</td>
+                    <td>${asset.price > 0 ? distancePercent.toFixed(1) + '%' : '-'}</td>
+                    <td><span class="${recommendation.class}">${recommendation.action}</span></td>
+                    <td>${investAmount > 0 ? `${investAmount}` : '-'}</td>
+                    <td class="${recommendation.priorityClass}">${recommendation.priority}</td>
+                    <td style="color: #ffd700;">${asset.percentage}%</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // ===== ACTUALIZAR ALERTAS =====
+        function refreshAlerts() {
+            const alertsContainer = document.getElementById('alertsContainer');
+            alertsContainer.innerHTML = '';
+
+            const buyZones = [];
+            const waitZones = [];
+            const updatedAssets = portfolio.filter(a => a.updated);
+
+            if (updatedAssets.length === 0) {
+                alertsContainer.innerHTML = '<div class="alert">💡 Actualiza al menos un precio para ver alertas de trading DCA</div>';
+                return;
+            }
+
+            updatedAssets.forEach(asset => {
+                const support = supportLevels[asset.name];
+                const distancePercent = ((asset.price - support.s1) / support.s1 * 100);
+                const recommendation = getDCARecommendation(distancePercent);
+
+                if (recommendation.priority === 'ALTA') {
+                    buyZones.push(asset);
+                } else if (recommendation.priority === 'ESPERA') {
+                    waitZones.push(asset);
+                }
+            });
+
+            if (buyZones.length > 0) {
+                const buyAlert = document.createElement('div');
+                buyAlert.className = 'alert';
+                buyAlert.innerHTML = `🟢 <strong>ZONAS DE COMPRA ACTIVAS:</strong> ${buyZones.map(a => a.name).join(', ')} - ¡Excelente momento para DCA!`;
+                alertsContainer.appendChild(buyAlert);
+            }
+
+            if (waitZones.length > 0) {
+                const waitAlert = document.createElement('div');
+                waitAlert.className = 'alert';
+                waitAlert.innerHTML = `🔴 <strong>SOPORTES ROTOS:</strong> ${waitZones.map(a => a.name).join(', ')} - Esperar niveles L2`;
+                alertsContainer.appendChild(waitAlert);
+            }
+
+            if (buyZones.length === 0 && waitZones.length === 0) {
+                const neutralAlert = document.createElement('div');
+                neutralAlert.className = 'alert';
+                neutralAlert.innerHTML = `⏳ <strong>MERCADO NEUTRAL:</strong> No hay zonas de compra críticas activas. Continuar monitoreando.`;
+                alertsContainer.appendChild(neutralAlert);
+            }
+        }
+
+        // ===== ACTUALIZAR ESTADÍSTICAS =====
+        function updateStats() {
+            const updatedCount = portfolio.filter(a => a.updated).length;
+            const buyZonesCount = portfolio.filter(a => {
+                if (!a.updated || a.price === 0) return false;
+                const support = supportLevels[a.name];
+                const distancePercent = ((a.price - support.s1) / support.s1 * 100);
+                const rec = getDCARecommendation(distancePercent);
+                return rec.priority === 'ALTA';
+            }).length;
+
+            document.getElementById('updated').textContent = `${updatedCount}/7`;
+            document.getElementById('buyZones').textContent = buyZonesCount;
+            document.getElementById('totalTrades').textContent = dcaTrades.length;
+
+            // Actualizar última actualización
+            const lastUpdateEl = document.getElementById('lastUpdate');
+            if (updatedCount > 0) {
+                const now = new Date();
+                lastUpdateEl.innerHTML = `✅ Última actualización: ${now.toLocaleTimeString()} - ${updatedCount} activos actualizados`;
+            }
+        }
+
+        // ===== EJECUTAR DCA =====
+        function executeDCA() {
+            const updatedAssets = portfolio.filter(a => a.updated && a.price > 0);
+            
+            if (updatedAssets.length === 0) {
+                showMessage('❌ Actualiza precios primero para ejecutar DCA', 'error');
+                return;
+            }
+
+            const trades = [];
+            let totalInvested = 0;
+
+            updatedAssets.forEach(asset => {
+                const support = supportLevels[asset.name];
+                const distancePercent = ((asset.price - support.s1) / support.s1 * 100);
+                const recommendation = getDCARecommendation(distancePercent);
+                
+                if (recommendation.percentage > 0) {
+                    const amount = Math.round(asset.capital * recommendation.percentage / 100);
+                    trades.push({
+                        asset: asset.name,
+                        price: asset.price,
+                        amount: amount,
+                        units: (amount / asset.price).toFixed(4),
+                        action: recommendation.action,
+                        timestamp: new Date()
+                    });
+                    totalInvested += amount;
+                }
+            });
+
+            if (trades.length === 0) {
+                showMessage('⚠️ No hay oportunidades de DCA en este momento', 'info');
+                return;
+            }
+
+            // Agregar trades al historial
+            dcaTrades = dcaTrades.concat(trades);
+            
+            // Mostrar resumen
+            showMessage(`✅ DCA Ejecutado: ${trades.length} operaciones por ${totalInvested} total`, 'success');
+            
+            // Actualizar historial visual
+            updateTradesHistory();
+            updateStats();
+        }
+
+        // ===== FETCH ALL PRICES (API SIMULADA) =====
+        async function fetchAllPrices() {
+            showMessage('🔄 Cargando precios actuales del mercado...', 'info');
+            
+            // Simular delay de red
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Precios simulados con valores realistas para Sept 2025
+            const currentPrices = {
+                ETH: { price: 4285.32, change: 2.5 },
+                SOL: { price: 198.45, change: -1.2 },
+                AVAX: { price: 23.15, change: 3.8 },
+                LINK: { price: 22.89, change: 1.1 },
+                AAVE: { price: 315.67, change: -0.5 },
+                GRT: { price: 0.0892, change: 4.2 },
+                RNDR: { price: 3.41, change: -2.3 }
+            };
+
+            let successCount = 0;
+            
+            // Actualizar cada activo
+            for (const asset of portfolio) {
+                if (currentPrices[asset.name]) {
+                    const data = currentPrices[asset.name];
+                    asset.price = data.price;
+                    asset.change24h = data.change;
+                    asset.updated = true;
+                    asset.lastUpdate = new Date();
+                    successCount++;
+                }
+            }
+            
+            if (successCount > 0) {
+                refreshTable();
+                refreshAlerts();
+                updateStats();
+                showMessage(`✅ ${successCount} precios actualizados exitosamente`, 'success');
+            } else {
+                showMessage('❌ No se pudieron obtener precios. Usa actualización manual.', 'error');
+            }
+        }
+
+        // ===== CARGAR API =====
+        async function loadAPI() {
+            try {
+                await fetchAllPrices();
+            } catch (error) {
+                showMessage('❌ Error al cargar API. Usa actualización manual.', 'error');
+                console.error('Error loading API:', error);
+            }
+        }
+
+        // ===== FETCH PRECIO INDIVIDUAL =====
+        async function fetchIndividualPrice() {
+            const asset = document.getElementById('assetSelect').value;
+            
+            if (!asset) {
+                showMessage('❌ Selecciona una crypto primero', 'error');
+                return;
+            }
+            
+            showMessage(`🔄 Obteniendo precio de ${asset}...`, 'info');
+            
+            // Simular fetch individual
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            const mockPrices = {
+                ETH: { price: 4285.32, change: 2.5 },
+                SOL: { price: 198.45, change: -1.2 },
+                AVAX: { price: 23.15, change: 3.8 },
+                LINK: { price: 22.89, change: 1.1 },
+                AAVE: { price: 315.67, change: -0.5 },
+                GRT: { price: 0.0892, change: 4.2 },
+                RNDR: { price: 3.41, change: -2.3 }
+            };
+            
+            if (mockPrices[asset]) {
+                document.getElementById('priceInput').value = mockPrices[asset].price;
+                document.getElementById('changeInput').value = mockPrices[asset].change;
+                showMessage(`✅ Precio de ${asset} obtenido: ${mockPrices[asset].price}`, 'success');
+            }
+        }
+
+        // ===== ACTUALIZAR HISTORIAL DE TRADES =====
+        function updateTradesHistory() {
+            const historyDiv = document.getElementById('tradesHistory');
+            
+            if (dcaTrades.length === 0) {
+                historyDiv.innerHTML = `
+                    <p style="opacity: 0.7; text-align: center; padding: 20px;">
+                        📊 No hay operaciones DCA registradas aún<br>
+                        <small>Actualiza precios y ejecuta tu primera inversión DCA</small>
+                    </p>
+                `;
+                return;
+            }
+
+            let html = '<div style="max-height: 300px; overflow-y: auto;">';
+            
+            // Mostrar trades más recientes primero
+            const sortedTrades = [...dcaTrades].reverse();
+            
+            sortedTrades.forEach((trade, index) => {
+                const time = new Date(trade.timestamp).toLocaleTimeString();
+                const date = new Date(trade.timestamp).toLocaleDateString();
+                
+                html += `
+                    <div style="padding: 12px; margin: 8px 0; background: rgba(255, 255, 255, 0.05); 
+                                border-radius: 10px; border-left: 3px solid #4caf50;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="color: #00f5ff;">${trade.asset}</strong>
+                                <span style="margin-left: 10px; opacity: 0.8;">
+                                    ${trade.units} unidades @ ${trade.price.toFixed(2)}
+                                </span>
+                            </div>
+                            <div style="text-align: right;">
+                                <strong style="color: #4caf50;">${trade.amount}</strong>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">${time}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            
+            // Resumen total
+            const totalInvested = dcaTrades.reduce((sum, t) => sum + t.amount, 0);
+            html += `
+                <div style="margin-top: 20px; padding: 15px; background: rgba(76, 175, 80, 0.2); 
+                            border-radius: 10px; text-align: center;">
+                    <strong>Total Invertido DCA: ${totalInvested.toFixed(2)}</strong> | 
+                    <strong>Operaciones: ${dcaTrades.length}</strong>
+                </div>
+            `;
+            
+            historyDiv.innerHTML = html;
+        }
+
+        // ===== EXPORTAR DATOS CSV =====
+        function exportData() {
+            if (!portfolio.some(a => a.updated)) {
+                showMessage('❌ No hay datos para exportar', 'error');
+                return;
+            }
+
+            let csv = 'Asset,Price,Change24h,Support L1,Support L2,Distance%,Recommendation,Amount,Capital%\n';
+            
+            portfolio.forEach(asset => {
+                if (asset.updated) {
+                    const support = supportLevels[asset.name];
+                    const distancePercent = ((asset.price - support.s1) / support.s1 * 100);
+                    const recommendation = getDCARecommendation(distancePercent);
+                    const amount = Math.round(asset.capital * recommendation.percentage / 100);
+                    
+                    csv += `${asset.name},${asset.price},${asset.change24h}%,${support.s1},${support.s2},`;
+                    csv += `${distancePercent.toFixed(1)}%,"${recommendation.action}",${amount},${asset.percentage}%\n`;
+                }
+            });
+            
+            // Agregar historial de trades si existe
+            if (dcaTrades.length > 0) {
+                csv += '\n\nTrade History\n';
+                csv += 'Asset,Price,Amount,Units,Action,Timestamp\n';
+                dcaTrades.forEach(trade => {
+                    csv += `${trade.asset},${trade.price},${trade.amount},${trade.units},"${trade.action}","${trade.timestamp}"\n`;
+                });
+            }
+            
+            // Crear y descargar archivo
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `DCA_Tracker_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            
+            showMessage('✅ Datos exportados a CSV', 'success');
+        }
+
+        // ===== LIMPIAR TODO =====
+        function clearAll() {
+            if (confirm('¿Estás seguro de limpiar todos los datos?')) {
+                portfolio.forEach(asset => {
+                    asset.price = 0;
+                    asset.change24h = 0;
+                    asset.updated = false;
+                    asset.lastUpdate = null;
+                });
+                
+                dcaTrades = [];
+                
+                refreshTable();
+                refreshAlerts();
+                updateStats();
+                updateTradesHistory();
+                clearInputs();
+                
+                document.getElementById('lastUpdate').innerHTML = '⏰ Listo para actualizar precios';
+                showMessage('✅ Todos los datos han sido limpiados', 'info');
+            }
+        }
+
+        // ===== LIMPIAR INPUTS =====
+        function clearInputs() {
+            document.getElementById('assetSelect').value = '';
+            document.getElementById('priceInput').value = '';
+            document.getElementById('changeInput').value = '';
+            document.getElementById('supportInput').value = '';
+        }
+
+        // ===== MOSTRAR MENSAJE =====
+        function showMessage(text, type) {
+            const messagesDiv = document.getElementById('messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            
+            messagesDiv.innerHTML = '';
+            messagesDiv.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                setTimeout(() => messageDiv.remove(), 300);
+            }, 4000);
+        }
+
+        // ===== GUARDAR EN ALMACENAMIENTO LOCAL =====
+        function saveToStorage() {
+            try {
+                const data = {
+                    portfolio: portfolio,
+                    dcaTrades: dcaTrades,
+                    lastSave: new Date().toISOString()
+                };
+                // Note: localStorage no funciona en Claude.ai, pero el código está listo para uso externo
+                if (typeof(Storage) !== "undefined" && window.location.hostname !== 'claude.ai') {
+                    localStorage.setItem('dcaTrackerData', JSON.stringify(data));
+                }
+            } catch (error) {
+                console.log('Auto-save deshabilitado en este entorno');
+            }
+        }
+
+        // ===== CARGAR DESDE ALMACENAMIENTO =====
+        function loadFromStorage() {
+            try {
+                // Note: localStorage no funciona en Claude.ai
+                if (typeof(Storage) !== "undefined" && window.location.hostname !== 'claude.ai') {
+                    const data = localStorage.getItem('dcaTrackerData');
+                    return data ? JSON.parse(data) : null;
+                }
+                return null;
+            } catch (error) {
+                console.log('Carga de datos deshabilitada en este entorno');
+                return null;
+            }
+        }
+
+        // ===== INICIALIZACIÓN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshTable();
+            updateStats();
+            
+            // Intentar cargar datos guardados
+            const savedData = loadFromStorage();
+            if (savedData && savedData.portfolio) {
+                // Restaurar datos si existen
+                savedData.portfolio.forEach((saved, i) => {
+                    if (portfolio[i] && saved.updated) {
+                        portfolio[i].price = saved.price;
+                        portfolio[i].change24h = saved.change24h;
+                        portfolio[i].updated = saved.updated;
+                        portfolio[i].lastUpdate = saved.lastUpdate ? new Date(saved.lastUpdate) : null;
+                    }
+                });
+                
+                if (savedData.dcaTrades) {
+                    dcaTrades = savedData.dcaTrades.map(t => ({
+                        ...t,
+                        timestamp: new Date(t.timestamp)
+                    }));
+                }
+                
+                refreshTable();
+                refreshAlerts();
+                updateStats();
+                updateTradesHistory();
+            }
+            
+            // Auto-guardar cada 30 segundos
+            setInterval(() => {
+                saveToStorage();
+            }, 30000);
+        });
+
+        // ===== ATAJOS DE TECLADO =====
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+Enter para actualizar precio
+            if (e.ctrlKey && e.key === 'Enter') {
+                updatePrice();
+            }
+            // Ctrl+E para ejecutar DCA
+            if (e.ctrlKey && e.key === 'e') {
+                e.preventDefault();
+                executeDCA();
+            }
+            // Ctrl+S para exportar
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                exportData();
+            }
+        });
+    </script>
+</body>
+</html>
